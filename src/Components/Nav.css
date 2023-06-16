@@ -1,7 +1,10 @@
 .nav-container{
+    position: sticky;
+    top: 0;
     margin: 0px;
     padding: 0px;
-    width: 100%;
+    max-width: 100%;
+    min-width: 50%;
     height: 50px;
     border-radius: 10px;
     background-color: rgb(137, 43, 226);
@@ -12,15 +15,20 @@
 
 .nav-container>div{
 
-    width: 30%;
     color: white;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
+.back{
+    margin-left: 25px;
+    color: #ffffff;
+    width: 10%;
+}
+
 .link-container{
-    width: 500px;
+    max-width: 500px;
     display: flex;
     align-items: center;
 }
@@ -44,12 +52,7 @@
     color: rgba(255, 255, 255, 0.772);
 }
 
-.back{
 
-    margin-left: 25px;
-    width: 10%;
-
-}
 
 .back:hover{
     cursor: pointer;

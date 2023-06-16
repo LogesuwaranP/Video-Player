@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import NewData from "./Components/Music/NewData";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
+import Edit from "./Components/Video/Edit";
 function App() {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -29,15 +30,16 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Feed data={data} />} />
-        <Route path="/play/:id" element={<Player Alldata={data} />} />
+        <Route path="/play/:id" element={<Player />} />
         <Route
           path="/create"
           element={<Create data={data} setData={setData} />}
         />
 
         <Route path="/music" element={<NewData />} />
-        <Route path="/edit" element={<About />} />
+        <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/edit/:id" element={<Edit />} />
       </Routes>
     </div>
   );

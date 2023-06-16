@@ -1,12 +1,39 @@
-import React from 'react'
+import Button from '@mui/material/Button';
+import React, { useEffect,  useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import axios from "axios";
+import SendIcon from '@mui/icons-material/Send';
+const Edit = () => {
 
-const Edit = async() => {
 
-    //const res = await axios.put(`https://648bfcbd8620b8bae7ec02d1.mockapi.io/videos/${id}`, { likes: like });
+  const navigate = useNavigate();
+  const {id} = useParams();
+  const[video,setVideo] = useState({});
+
+  useEffect(()=>{
+    axios.get(`https://648bfcbd8620b8bae7ec02d1.mockapi.io/videos/${id}`).then((response)=>
+    {
+      setVideo(response.data);
+    })
+  },[])
+
+  const handleSave = ()=>{
+      axios.put(`https://648bfcbd8620b8bae7ec02d1.mockapi.io/videos/${id}`,video)
+      .then(()=>{
+        navigate("/");
+      });
+  } 
 
   return (
     <div>
-      <h1>edit</h1>
+      <form>
+        <input value={video.name} onChange={(e)=>setVideo({...video, name:e.target.value})} placeholder="Enter Song Name"/>
+        <input value={video.url}onChange={(e)=>setVideo({...video, url:e.target.value})} placeholder="Enter URL"/>
+        <textarea value={video.discription} onChange={(e)=>setVideo({...video, discription:e.target.value})} placeholder="Enter discription"/>
+        <Button variant="contained" color="secondary"  endIcon={<SendIcon />} onClick={handleSave}>
+            Save
+        </Button>
+      </form>
     </div>
   )
 }

@@ -16,9 +16,6 @@ const Create = ({data,setData}) => {
         likes:0
     });
 
-    useEffect(()=>{
-
-    },[])
 
     const save=()=> {
       // axios.post('https://648bfcbd8620b8bae7ec02d1.mockapi.io/videos', JSON.stringify(NewVideo))
@@ -67,7 +64,6 @@ const Create = ({data,setData}) => {
       <form>
         <input onChange={(e)=>setNewVideo({...NewVideo, name:e.target.value})} placeholder="Enter Song Name"/>
         <input onChange={(e)=>setNewVideo({...NewVideo, url:e.target.value})} placeholder="Enter URL"/>
-        <input onChange={(e)=>setNewVideo({...NewVideo, likes:e.target.value})}placeholder="Enter Likes" type="number"/>
         <textarea onChange={(e)=>setNewVideo({...NewVideo, discription:e.target.value})} placeholder="Enter discription"/>
         <Button variant="contained" color="secondary"  endIcon={<SendIcon />} onClick={handleSubmit}>
             Submit
